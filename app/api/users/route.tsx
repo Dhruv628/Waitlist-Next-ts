@@ -6,7 +6,7 @@ import { NextResponse, NextRequest } from "next/server";
 export const POST = async (request: NextRequest) => {
   try {
     const reqBody = await request.json();
-    const { name, email, company, designation, industry, service } = reqBody;
+    const { name, email, company, designation, industry, service,message } = reqBody;
 
     const user = await User.findOne({ email });
     if (user) {
@@ -15,53 +15,26 @@ export const POST = async (request: NextRequest) => {
         { status: 400 }
       );
     }
-
-    if (!name || !email || !company || !designation || !industry || !service) {
-      return NextResponse.json(
-        { message: "Please fill all the details" },
-        { status: 400 }
-      );
+    let sentUser;
+    if(!message){
+      sentUser = await User.create({
+        name,
+        email,
+        company,
+        designation,
+        industry,
+        service
+      });
     }
-    let nodemailer = require("nodemailer");
-
-    // Send email using nodemailer
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: "reactshopecommerce@gmail.com",
-        pass: "jbasnsvkukreoxai",
-      },
-    });
-
-  
-
-    const mailOptions = {
-      from: "reactshopecommerce@gmail.com",
-      to: email,
-      subject: "Welcome to our Waitlist",
-      html: `
-        <p>Thank you for joining our waitlist!</p>
-        <p>Name: ${name}</p>
-        <p>Email: ${email}</p>
-        <p>Company: ${company}</p>
-        <p>Designation: ${designation}</p>
-        <p>Industry: ${industry}</p>
-        <p>Service: ${service}</p>
-      `,
-    };
-
-    transporter.sendMail(mailOptions);
-
-    const createdUser = await User.create({
-      name,
-      email,
-      company,
-      designation,
-      industry,
-      service,
-    });
+    else{
+      sentUser = await User.create({
+        name,
+        email,
+        message
+      });
+    }
     return NextResponse.json(
-      { message: "success", createdUser },
+      { message: "success", sentUser },
       { status: 200 }
     );
   } catch (error) {

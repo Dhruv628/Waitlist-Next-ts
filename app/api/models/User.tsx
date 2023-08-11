@@ -9,21 +9,24 @@ const UserSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  message:{
+    type: String,
+  },
   company: {
     type: String,
-    required: true,
+  
   },
   designation: {
     type: String,
-    required: true,
+ 
   },
   industry: {
     type: String,
-    required: true,
+
   },
   service: {
     type: String,
-    required: true,
+
   },
   Date: {
     type: Date,
