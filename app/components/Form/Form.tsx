@@ -116,7 +116,7 @@ const Form = () => {
 
   return (
     <motion.div
-      className="shadow-2xl   xs:py-[1.1rem] ss:py-7 mt-[-1.6rem] rounded-md flex items-center justify-center bg-white"
+      className="shadow-2xl xs:py-[1.1rem] ss:py-7 mt-[-1.6rem] rounded-md flex items-center justify-center bg-white"
       initial="hidden"
       animate="visible"
       variants={formContainerVariants}
