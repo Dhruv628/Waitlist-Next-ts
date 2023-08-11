@@ -121,17 +121,17 @@ const Form = () => {
       animate="visible"
       variants={formContainerVariants}
     >
-      <form className="container space-y-7   xs:px-[1rem] md:px-0 lg:px-4 xl:px-[5rem] 2xl:px-[9rem] flex flex-col items-center ">
-        <h1 className="text-3xl font-extrabold  bg-gradient-to-r from-blue-800 via-purple-900 to-pink-900 text-transparent bg-clip-text">
+      <form className="container xs:space-y-4 ss:space-y-7   xs:px-[1rem] md:px-0 lg:px-4 xl:px-[5rem] 2xl:px-[9rem] flex flex-col items-center ">
+        <h1 className= "text-2xl ss:text-3xl font-extrabold  bg-gradient-to-r from-blue-800 via-purple-900 to-pink-900 text-transparent bg-clip-text">
           Join the Waitlist
         </h1>
-        <h2 className="bg-gradient-to-r font-bold from-blue-800 via-p via-blue-600 to-purple-700 text-lg text-transparent bg-clip-text">
+        <h2 className="  bg-gradient-to-r font-bold from-blue-800 via-p via-blue-600 to-purple-700 xs:text-md ss:text-lg text-transparent bg-clip-text">
           Join today for early access & discounted pricing.
         </h2>
-        <div className="xs:space-y-3 md:space-y-5 lg:space-y-3">
+        <div className="xs:space-y-2 md:space-y-5 lg:space-y-3">
           <div className="FullName">
             <label
-              className='block mb-2 after:content-["*"] font-semibold after:text-red-600 '
+              className='block mb-2 text-sm ss:text-md after:content-["*"] font-semibold after:text-red-600 '
               htmlFor="FullName"
             >
               Full Name{" "}
@@ -139,7 +139,7 @@ const Form = () => {
             <motion.input
               onChange={(e) => setname(e.target.value)}
               type="email"
-              className="px-3 py-3 border border-black w-[100%] rounded-sm"
+              className="p-2 ss:p-3 border placeholder:text-sm ss:placeholder:text-md border-black w-[100%] rounded-sm"
               id="FullName"
               name="FullName"
               value={name}
@@ -151,7 +151,7 @@ const Form = () => {
           </div>
           <div className="Email">
             <label
-              className='block mb-2 after:content-["*"] font-semibold after:text-red-600'
+              className='block mb-2 text-sm ss:text-md  after:content-["*"] font-semibold after:text-red-600'
               htmlFor="email"
             >
               Email
@@ -159,7 +159,7 @@ const Form = () => {
             <motion.input
               onChange={(e) => setemail(e.target.value)}
               type="email"
-              className="px-3 py-3 border border-black w-[100%] rounded-sm"
+              className="p-2 ss:px-3 ss:py-3 border placeholder:text-sm ss:placeholder:text-md border-black w-[100%] rounded-sm"
               id="email"
               name="email"
               value={email}
@@ -172,7 +172,7 @@ const Form = () => {
           <div className=" xs:space-y-3 ss:space-y-0 ss:grid ss:gap-3 ss:grid-flow-col">
             <div className="Company">
               <label
-                className='block mb-2 after:content-["*"] font-semibold after:text-red-600'
+                className='block mb-2 text-sm ss:text-md after:content-["*"] font-semibold after:text-red-600'
                 htmlFor="Company"
               >
                 Company
@@ -187,12 +187,12 @@ const Form = () => {
                 whileFocus="focus"
                 variants={inputAnimation}
                 onChange={(e) => setcompany(e.target.value)}
-                className="px-2 py-3 border border-black w-[100%] rounded-sm"
+                className="p-2 ss:px-3 ss:py-3 border placeholder:text-sm ss:placeholder:text-md border-black w-[100%] rounded-sm"
               />
             </div>
             <div className="Designation">
               <label
-                className='block mb-2 after:content-["*"] font-semibold after:text-red-600'
+                className='block mb-2 text-sm ss:text-md after:content-["*"] font-semibold after:text-red-600'
                 htmlFor="Company"
               >
                 Designation in company
@@ -207,19 +207,19 @@ const Form = () => {
                 whileFocus="focus"
                 variants={inputAnimation}
                 onChange={(e) => setdesignation(e.target.value)}
-                className="px-3 py-3 border border-black w-[100%] rounded-sm"
+                className="p-2 ss:px-3 ss:py-3 border placeholder:text-sm ss:placeholder:text-md border-black w-[100%] rounded-sm"
               />
             </div>
           </div>
 
           <div className="space-y-3">
-            <h3 className='after:content-["*"] after:text-red-600 font-semibold'>
+            <h3 className='after:content-["*"] text-sm ss:text-md after:text-red-600 font-semibold'>
               Industry
             </h3>
             <motion.select
               value={industry}
               onChange={(e) => setindustry(e.target.value)}
-              className=" px-3 py-3 border border-black w-[100%] rounded-sm"
+              className="p-2 text-sm ss:text-md ss:px-3 ss:py-3 border border-black w-[100%] rounded-sm"
               name=""
               id=""
               whileHover="hover"
@@ -237,13 +237,13 @@ const Form = () => {
             </motion.select>
           </div>
           <div className="space-y-4">
-            <h3 className='after:content-["*"] after:text-red-600 font-semibold'>
+            <h3 className='after:content-["*"] text-sm ss:text-md after:text-red-600 font-semibold'>
               What is the type of services are you looking for?{" "}
             </h3>
             <motion.select
               value={services}
               onChange={(e) => setservices(e.target.value)}
-              className="px-3 py-3 border border-black w-[100%] rounded-sm"
+              className="p-2 text-sm ss:text-md ss:px-3 ss:py-3 border border-black w-[100%] rounded-sm"
               name=""
               id=""
               whileHover="hover"
