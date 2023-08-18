@@ -22,7 +22,7 @@ const Form = () => {
     "Services",
   ];
   const service = ["Survey", "Testing + Feedback", "Focus groups"];
-
+  const [type, settype] = useState("Company")
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [company, setcompany] = useState("");
@@ -44,12 +44,14 @@ const Form = () => {
     let sentData;
     if (testerDisplay === "block") {
       sentData = {
+        User_type:type,   
         name: name,
         email: email,
         message: message,
       };
     } else {
       sentData = {
+        User_type:type,  
         name: name,
         email: email,
         company: company,
@@ -198,6 +200,7 @@ const Form = () => {
           </div>
           <div className=" flex w-[100%] justify-evenly">
             <div className="flex items-center">
+              {/* Company  */}
               <div>
                 <label htmlFor="company" className="mr-2 text-sm">
                   Company
@@ -208,6 +211,7 @@ const Form = () => {
                   onClick={() => {
                     settesterDisplay("hidden");
                     setcompanyDisplay("block");
+                    settype("Company");
                   }}
                   id="company"
                   name="userType"
@@ -216,6 +220,7 @@ const Form = () => {
                 ></input>
               </div>
             </div>
+                        {/* Tester  */}
             <div className="flex items-center">
               <div>
                 <label htmlFor="tester" className="mr-2 text-sm">
@@ -227,6 +232,7 @@ const Form = () => {
                   onClick={() => {
                     setcompanyDisplay("hidden");
                     settesterDisplay("block");
+                    settype("Tester");
                   }}
                   id="tester"
                   name="userType"

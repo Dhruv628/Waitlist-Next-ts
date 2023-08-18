@@ -6,7 +6,7 @@ import { NextResponse, NextRequest } from "next/server";
 export const POST = async (request: NextRequest) => {
   try {
     const reqBody = await request.json();
-    const { name, email, company, designation, industry, service,message } = reqBody;
+    const { User_type,name, email, company, designation, industry, service,message } = reqBody;
 
     const user = await User.findOne({ email });
     if (user) {
@@ -18,6 +18,7 @@ export const POST = async (request: NextRequest) => {
     let sentUser;
     if(!message){
       sentUser = await User.create({
+        User_type,
         name,
         email,
         company,
@@ -25,25 +26,33 @@ export const POST = async (request: NextRequest) => {
         industry,
         service
       });
+      return NextResponse.json(
+        { message: "success", sentUser },
+        { status: 200 }
+      );
     }
     else{
       sentUser = await User.create({
+        User_type,
         name,
         email,
         message
       });
+      return NextResponse.json(
+        { message: "success", sentUser },
+        { status: 200 }
+      );
     }
-    return NextResponse.json(
-      { message: "success", sentUser },
-      { status: 200 }
-    );
+
   } catch (error) {
+    if(error instanceof Error){
     return NextResponse.json(
-      { message: "Failed to fetch prompts created by user" },
+      { message: error.message},
       {
         status: 500,
       }
     );
   }
+}
 };
 connectToDB();

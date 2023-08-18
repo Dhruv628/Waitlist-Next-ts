@@ -11,7 +11,7 @@ const connectToDB = async (): Promise<void> => {
   }
 
   try {
-    await mongoose.connect("mongodb+srv://sharmaaniket682:HKvZMajQDqEK9hIf@cluster0.nkzorwo.mongodb.net/?retryWrites=true&w=majority/wishlist");
+    await mongoose.connect("mongodb+srv://sharmaaniket682:HKvZMajQDqEK9hIf@cluster0.nkzorwo.mongodb.net/?retryWrites=true&w=majority");
     isConnected = true;
 
     console.log("MongoDB connected");
